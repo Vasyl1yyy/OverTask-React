@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import LogIn from './components/Sign/LogIn/LogIn';
 import SignUp from './components/Sign/SignUp/SIgnUp';
 import Header from './components/Header/Header';
+import Tasks from './components/Tasks/Tasks';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <Header />
         <div className="flex justify-center item-center">
           <Routes>
+            <Route path="task" element={<Tasks />} />
             <Route path="log-in" element={<LogIn />} />
             <Route path="sign-up" element={<SignUp />} />
           </Routes>
