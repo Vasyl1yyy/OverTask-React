@@ -1,6 +1,36 @@
 import { Link, NavLink } from 'react-router-dom';
+import { sign } from '../../store/store';
+
+const SignNull = () => {
+  return (
+    <>
+      <Link
+        className="text-white bg-purple rounded-full px-3 py-1.5"
+        to="/sign-up"
+      >
+        Sign up
+      </Link>
+      <Link className=" text-purpleWhite" to="/log-in">
+        Log in
+      </Link>
+    </>
+  );
+};
+
+const SignUser = ({ user }) => {
+  return <p>{user}</p>;
+};
 
 function Header() {
+  const account = sign((state) => state.account);
+
+  const accountUser = (a) => {
+    if (a !== null) {
+      return <SignUser user={a.username} />;
+    } else {
+      return <SignNull />;
+    }
+  };
   return (
     <div className="mx-3 px-10 py-2 flex justify-between items-center bg-gray rounded-full transition-colors border-grayWhite hover:border-purple border-2 mb-12">
       <div className="text-lg font-extrabold text-purpleWhite">Logo</div>
@@ -19,15 +49,7 @@ function Header() {
         </li>
       </ul>
       <div className="flex text-sm font-bold gap-3 justify-center items-center">
-        <Link
-          className="text-white bg-purple rounded-full px-3 py-1.5"
-          to="/sign-up"
-        >
-          Sign up
-        </Link>
-        <Link className=" text-purpleWhite" to="/log-in">
-          Log in
-        </Link>
+        {accountUser(account)}
       </div>
     </div>
   );

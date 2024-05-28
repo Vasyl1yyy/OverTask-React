@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { sign } from '../../../store/store';
 
 function SignUp() {
@@ -11,6 +11,8 @@ function SignUp() {
   const addTextEmail = sign((state) => state.addTextEmail);
 
   const addUsers = sign((state) => state.addUsers);
+
+  const navigate = useNavigate();
 
   return (
     <div className="px-8 py-6 bg-gray rounded-3xl min-w-60 w-80">
@@ -45,7 +47,10 @@ function SignUp() {
         />
       </div>
       <button
-        onClick={addUsers}
+        onClick={() => {
+          addUsers();
+          navigate('/');
+        }}
         className="text-sm font-bold bg-purple text-center rounded-full w-full py-2 mb-3"
       >
         Sign up

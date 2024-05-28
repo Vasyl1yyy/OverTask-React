@@ -15,7 +15,7 @@ export const task = create((set) => ({
 }));
 
 export const sign = create((set) => ({
-  account: false,
+  account: null,
   users: [],
   inputUsername: '',
   inputPassword: '',
@@ -30,7 +30,11 @@ export const sign = create((set) => ({
         },
         ...state.users,
       ],
-      account: true,
+      account: {
+        username: state.inputUsername,
+        email: state.inputEmail,
+        password: state.inputPassword,
+      },
       inputUsername: '',
       inputPassword: '',
       inputEmail: '',
