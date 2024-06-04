@@ -6,7 +6,13 @@ export const task = create((set) => ({
   addTask: () =>
     set((state) => ({
       tasks: [
-        { id: Math.random() * 100, text: state.textTask },
+        {
+          id: Math.random() * 100,
+          hard: '',
+          text: state.textTask,
+          tag: '',
+          data: '',
+        },
         ...state.tasks,
       ],
       textTask: '',
@@ -17,29 +23,20 @@ export const task = create((set) => ({
 export const sign = create((set) => ({
   account: null,
   users: [],
-  inputUsername: '',
-  inputPassword: '',
-  inputEmail: '',
-  addUsers: () =>
+  addUsers: (username, email, password) =>
     set((state) => ({
       users: [
         {
-          username: state.inputUsername,
-          email: state.inputEmail,
-          password: state.inputPassword,
+          username: username,
+          email: email,
+          password: password,
         },
         ...state.users,
       ],
       account: {
-        username: state.inputUsername,
-        email: state.inputEmail,
-        password: state.inputPassword,
+        username: username,
+        email: email,
+        password: password,
       },
-      inputUsername: '',
-      inputPassword: '',
-      inputEmail: '',
     })),
-  addTextUsername: (text) => set(() => ({ inputUsername: text })),
-  addTextPassword: (text) => set(() => ({ inputPassword: text })),
-  addTextEmail: (text) => set(() => ({ inputEmail: text })),
 }));
