@@ -2,22 +2,13 @@ import { create } from 'zustand';
 
 export const task = create((set) => ({
   tasks: [],
-  textTask: '',
-  addTask: () =>
+  addTask: (hard, text, tag, data) =>
     set((state) => ({
       tasks: [
-        {
-          id: Math.random() * 100,
-          hard: '',
-          text: state.textTask,
-          tag: '',
-          data: '',
-        },
+        { id: 1, hard: hard, text: text, tag: tag, data: data },
         ...state.tasks,
       ],
-      textTask: '',
     })),
-  addTextTask: (text) => set(() => ({ textTask: text })),
 }));
 
 export const sign = create((set) => ({

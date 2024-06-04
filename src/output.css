@@ -739,6 +739,16 @@ video {
   border-radius: 0.75rem;
 }
 
+.rounded-l-full {
+  border-top-left-radius: 9999px;
+  border-bottom-left-radius: 9999px;
+}
+
+.rounded-r-full {
+  border-top-right-radius: 9999px;
+  border-bottom-right-radius: 9999px;
+}
+
 .border-2 {
   border-width: 2px;
 }
@@ -830,6 +840,14 @@ video {
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+.pl-3 {
+  padding-left: 0.75rem;
+}
+
+.pr-4 {
+  padding-right: 1rem;
 }
 
 .pt-2 {
@@ -925,6 +943,10 @@ video {
 
 .active {
   color: #bd59ff;
+}
+
+body {
+  background-color: #1a191a;
 }
 
 .hover\:border-purple:hover {
