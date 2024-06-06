@@ -2,12 +2,27 @@ import { create } from 'zustand';
 
 export const task = create((set) => ({
   tasks: [],
+  modelAddTask: false,
   addTask: (hard, text, tag, data) =>
     set((state) => ({
       tasks: [
-        { id: 1, hard: hard, text: text, tag: tag, data: data },
+        {
+          id: Math.random() * 100,
+          hard: hard,
+          text: text,
+          tag: tag,
+          data: data,
+        },
         ...state.tasks,
       ],
+    })),
+  deleteTask: (id) =>
+    set((state) => ({
+      tasks: state.tasks.filter((e) => e.id != id),
+    })),
+  setModelAddTask: () =>
+    set((state) => ({
+      modelAddTask: !state.modelAddTask,
     })),
 }));
 

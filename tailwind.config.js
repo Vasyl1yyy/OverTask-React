@@ -13,6 +13,7 @@ export default {
       red: '#F13A3A',
       yellow: '#F9E828',
       blue: '#36A2F4',
+      blackOp: '#1a191a80',
     },
     fontFamily: {
       fontMain: ['Nunito', 'sans-serif'],

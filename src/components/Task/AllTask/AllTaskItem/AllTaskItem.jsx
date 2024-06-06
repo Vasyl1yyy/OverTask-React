@@ -1,4 +1,8 @@
+import { FaTrash } from 'react-icons/fa';
+import { task } from '../../../../store/store';
+
 export default function AllTaskItem({ hard, text, tag, data, id }) {
+  const deleteTask = task((state) => state.deleteTask);
   return (
     <div
       id={id}
@@ -9,7 +13,13 @@ export default function AllTaskItem({ hard, text, tag, data, id }) {
       <p className="col-span-4">{text}</p>
       <div className="col-span-1 text-green text-center">{tag}</div>
       <div className="col-span-1 text-center">{data}</div>
-      <button className="col-span-1 text-red text-end">#</button>
+      <button className="col-span-1 text-red flex justify-end items-center">
+        <FaTrash
+          className="z-10"
+          id={id}
+          onClick={(e) => deleteTask(e.target.nearestViewportElement.id)}
+        />
+      </button>
     </div>
   );
 }

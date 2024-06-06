@@ -1,33 +1,27 @@
-import { useState } from 'react';
 import AllTaskItem from './AllTaskItem/AllTaskItem';
 import { task } from '../../../store/store';
+import AddTaskItem from './AddTaskItem/AddTaskItem';
+import { IoIosAdd } from 'react-icons/io';
+import ModelAddTask from './ModelAddTask/ModelAddTask';
 
 export default function AllTask() {
-  const [input, setInput] = useState('');
   const tasks = task((state) => state.tasks);
+  const setModel = task((state) => state.setModelAddTask);
+
   const tasksItem = tasks.map((e) => (
-    <AllTaskItem hard={e.hard} text={e.text} tag={e.tag} data={e.data} />
+    <AllTaskItem
+      id={e.id}
+      hard={e.hard}
+      text={e.text}
+      tag={e.tag}
+      data={e.data}
+    />
   ));
-  const addTask = task((state) => state.addTask);
+
   return (
     <div className="bg-gray border-grayWhite border-2 rounded-3xl gap-4 py-8 px-8 transition-colors  hover:border-purple col-span-4 h-min">
-      <div className="w-full text-center mb-5 flex">
-        <input
-          type="text"
-          className="bg-main text-white w-full  text-base px-4 py-2  rounded-l-full"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-        />
-        <button
-          className="font-bold bg-purple pl-3 pr-4 rounded-r-full"
-          onClick={() => {
-            addTask('bg-green', input, 'dev', 'today');
-            setInput('');
-          }}
-        >
-          Add
-        </button>
-      </div>
+      <ModelAddTask />
+      <AddTaskItem />
       <div className="bg-main rounded-3xl p-5 flex flex-col gap-3">
         <div className="grid text-sm font-bold text-purpleWhite grid-cols-8 mx-4">
           <p className="col-span-1">Hard</p>
@@ -36,9 +30,17 @@ export default function AllTask() {
           <p className="col-span-1 text-center">Data</p>
           <div></div>
         </div>
-        {tasksItem}
-        {/* <AllTaskItem hard="bg-red" text="hello" tag="dev" data="today" />
-        <AllTaskItem hard="bg-green" text="world" tag="dev" data="tomorrow" /> */}
+        {tasks.length == 0 ? (
+          <bottom
+            onClick={() => setModel()}
+            className="bg-gray text-grayWhite text-7xl rounded-xl flex flex-col justify-center items-center py-4 cursor-pointer transition-colors hover:bg-grayWhite hover:text-white"
+          >
+            <IoIosAdd />
+            <p className="text-sm font-bold">click on me to add a task</p>
+          </bottom>
+        ) : (
+          tasksItem
+        )}
       </div>
     </div>
   );
