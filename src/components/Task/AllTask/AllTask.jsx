@@ -11,10 +11,11 @@ export default function AllTask() {
   const tasksItem = tasks.map((e) => (
     <AllTaskItem
       id={e.id}
-      hard={e.hard}
+      difficult={e.difficult}
       text={e.text}
       tag={e.tag}
       data={e.data}
+      active={e.active}
     />
   ));
 
@@ -24,7 +25,7 @@ export default function AllTask() {
       <AddTaskItem />
       <div className="bg-main rounded-3xl p-5 flex flex-col gap-3">
         <div className="grid text-sm font-bold text-purpleWhite grid-cols-8 mx-4">
-          <p className="col-span-1">Hard</p>
+          <p className="col-span-1">Difficult</p>
           <p className="col-span-4">Text</p>
           <p className="col-span-1 text-center">Tag</p>
           <p className="col-span-1 text-center">Data</p>

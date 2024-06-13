@@ -9,3 +9,15 @@
 body {
   background-color: #1a191a;
 }
+
+.easy {
+  background-color: #7bf42f;
+}
+
+.normal {
+  background-color: #f9e828;
+}
+
+.hard {
+  background-color: #f13a3a;
+}
